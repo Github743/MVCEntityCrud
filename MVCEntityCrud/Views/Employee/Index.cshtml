@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+
+
+@model List<MVCCrud.Model.Employee>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .body {
+            display: flex;
+            justify-content: center; /* Centers the table horizontally */
+            align-items: flex-start; /* Aligns to the top */
+            min-height: 100vh; /* Full viewport height */
+            padding-top: 20px; /* Space from the top */
+        }
+
+        .table-container {
+            width: 80%; /* Increase width for better centering */
+            max-width: 900px; /* Prevent too much stretching */
+            text-align: center;
+            margin: auto; /* Ensures it's properly centered */
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h2 class="text-center">Employees List</h2>
+        <div class="d-flex justify-content-end mb-2">
+            <button class="btn btn-primary" onclick="openEditModal('0')">
+                <i class="fa fa-plus"></i> Add
+            </button>
+        </div>
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.Name</td>
+                        <td>@emp.Email</td>
+                        <td>@emp.Position</td>
+                        <td>@emp.Salary</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" onclick="openEditModal(@emp.Id)">
+                                <i class="fa fa-pencil"></i> Edit
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="Delete(@emp.Id)">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="editModalContainer">
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Scripts/app/employee.js"></script>
+
+</body>
+</html>
