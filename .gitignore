@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MVCCrud.Model/bin/Debug
+/MVCCrud.Model/obj/Debug
+/MVCCrud.Model/Properties
+/MVCEntityCrud/bin
+/MVCEntityCrud/obj/Debug
+/MVCEntityCrud/Properties
