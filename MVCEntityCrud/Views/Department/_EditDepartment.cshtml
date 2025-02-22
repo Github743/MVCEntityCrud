@@ -1,0 +1,33 @@
+﻿@model MVCCrud.Model.Department
+
+<div class="modal fade" id="departmentModal" tabindex="-1" aria-labelledby="departmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="departmentModalLabel">
+                    @(Model?.Department_ID == 0 ? "Add Department" : "Edit Department")
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="departmentForm">
+                    @Html.HiddenFor(m => m.Department_ID)
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        @Html.TextBoxFor(m => m.Department_Name, new { @class = "form-control", placeholder = "Enter name" })
+                    </div>
+
+                   
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="saveDepartment();">
+                    @(Model?.Department_ID == 0 ? "Add" : "Update")
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

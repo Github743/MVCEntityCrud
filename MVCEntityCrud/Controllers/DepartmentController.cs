@@ -1,33 +1,33 @@
 ﻿using MVCCrud.Model;
 using MVCEntityCrud.DAL;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MVCEntityCrud.Controllers
 {
-    public class EmployeeController : Controller
+    public class DepartmentController : Controller
     {
-        private readonly EMP_DAL emp_DAL = new EMP_DAL();
-        
-        // GET: Employee
+        private readonly Department_DAL Department_DAL = new Department_DAL();
+        // GET: Department
         public ActionResult Index()
         {
-            var employees = emp_DAL.List();
-            
-            return View(employees);
-
+            var Department = Department_DAL.List();
+            return View(Department);
         }
 
         public ActionResult Create()
         {
-            return PartialView("_EditEmployee", new Employee());
+            return PartialView("_EditDepartment", new Department());
         }
         [HttpPost]
-        public JsonResult Save(Employee employee)
+        public JsonResult Save(Department department)
         {
             try
             {
-                return Json(new { success = emp_DAL.SaveEmployee(employee) });
+                return Json(new { success = Department_DAL.SaveDepartment(department) });
             }
             catch
             {
@@ -35,13 +35,12 @@ namespace MVCEntityCrud.Controllers
             }
         }
 
-
         [HttpPost]
         public JsonResult Delete(int id)
         {
             try
             {
-                return Json(new { success = emp_DAL.Delete(id) });
+                return Json(new { success = Department_DAL.Delete(id) });
             }
             catch
             {
@@ -52,8 +51,8 @@ namespace MVCEntityCrud.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var employee = emp_DAL.GetEmployeeById(id);
-            return PartialView("_EditEmployee", employee);
+            var department = Department_DAL.GetDepartmentById(id);
+            return PartialView("_EditDepartment", department);
         }
     }
 }

@@ -2,28 +2,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace MVCEntityCrud.DAL
 {
-    public class EMP_DAL
-    {
-        public IEnumerable<Employee> List()
+	public class Department_DAL
+	{
+        public IEnumerable<Department> List()
         {
             using (var context = new DbContext())
             {
-                var employees = context.Employees.ToList();
-                return employees;
+                var Department = context.Departments.ToList();
+                return Department;
             }
         }
-
         public bool Delete(int id)
         {
             using (var context = new DbContext())
             {
-                var employee = context.Employees.FirstOrDefault(x => x.EMP_ID == id);
-                if (employee != null)
+                var department = context.Departments.FirstOrDefault(x => x.Department_ID == id);
+                if (department != null)
                 {
-                    context.Employees.Remove(employee);
+                    context.Departments.Remove(department);
                     context.SaveChanges();
                     return true;
                 }
@@ -31,29 +31,28 @@ namespace MVCEntityCrud.DAL
             }
         }
 
-        public Employee GetEmployeeById(int id)
+        public Department GetDepartmentById(int id)
         {
             using (var context = new DbContext())
             {
-                return context.Employees.FirstOrDefault(e => e.EMP_ID == id);
+                return context.Departments.FirstOrDefault(e => e.Department_ID == id);
             }
         }
 
-        public bool SaveEmployee(Employee employee)
+        public bool SaveDepartment(Department department)
         {
             try
             {
                 using (var context = new DbContext())
                 {
-                    var existingEmployee = context.Employees.FirstOrDefault(e => e.EMP_ID == employee.EMP_ID);
+                    var existingEmployee = context.Departments.FirstOrDefault(e => e.Department_ID == department.Department_ID);
                     if (existingEmployee != null)
                     {
-                        existingEmployee.EMP_Name = employee.EMP_Name;
-                        existingEmployee.EMP_Salary = employee.EMP_Salary;
+                        existingEmployee.Department_Name = department.Department_Name;
                     }
                     else
                     {
-                        context.Employees.Add(employee);
+                        context.Departments.Add(department);
                     }
                     context.SaveChanges();
                     return true;
@@ -64,5 +63,7 @@ namespace MVCEntityCrud.DAL
                 return false;
             }
         }
+
     }
+
 }

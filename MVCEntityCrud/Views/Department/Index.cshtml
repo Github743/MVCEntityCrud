@@ -3,7 +3,7 @@
 }
 
 
-@model List<MVCCrud.Model.Employee>
+@model List<MVCCrud.Model.Department>
 <html>
 <head>
     @Styles.Render("~/Content/css")
@@ -27,7 +27,7 @@
 </head>
 <body>
     <div class="table-container">
-        <h2 class="text-center">Employees List</h2>
+        <h2 class="text-center">Departments List</h2>
         <div class="d-flex justify-content-end mb-2">
             <button class="btn btn-primary" onclick="openEditModal('0')">
                 <i class="fa fa-plus"></i> Add
@@ -37,21 +37,21 @@
             <thead class="table-dark">
                 <tr>
                     <th>Name</th>
-                    <th>Salary</th>
+       
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var emp in Model)
+                @foreach (var dept in Model)
                 {
                     <tr>
-                        <td>@emp.EMP_Name</td>
-                        <td>@emp.EMP_Salary</td>
+                        <td>@dept.Department_Name</td>
+                   
                         <td>
-                            <button class="btn btn-secondary btn-sm" onclick="openEditModal(@emp.EMP_ID)">
+                            <button class="btn btn-secondary btn-sm" onclick="openEditModal(@dept.Department_ID)">
                                 <i class="fa fa-pencil"></i> Edit
                             </button>
-                            <button class="btn btn-danger btn-sm" onclick="Delete(@emp.EMP_ID)">
+                            <button class="btn btn-danger btn-sm" onclick="Delete(@dept.Department_ID)">
                                 <i class="fa fa-trash"></i> Delete
                             </button>
                         </td>
@@ -66,7 +66,7 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script type="text/javascript" src="~/Scripts/app/employee.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/Department.js"></script>
 
 </body>
 </html>
