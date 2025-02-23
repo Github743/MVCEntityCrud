@@ -11,10 +11,12 @@ namespace MVCCrud.Model
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Login> Login { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().ToTable("Employee");
+            modelBuilder.Entity<Login>().ToTable("Login");
             modelBuilder.Entity<Department>().ToTable("Department");// Maps to existing table
             base.OnModelCreating(modelBuilder);
         }

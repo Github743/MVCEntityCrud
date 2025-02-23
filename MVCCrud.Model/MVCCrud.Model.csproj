@@ -52,7 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
-    <Compile Include="EmployeeDbContext.cs" />
+    <Compile Include="DbContext.cs" />
+    <Compile Include="Login.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

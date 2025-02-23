@@ -8,7 +8,7 @@ namespace MVCEntityCrud.Controllers
     public class EmployeeController : Controller
     {
         private readonly EMP_DAL emp_DAL = new EMP_DAL();
-        
+
         // GET: Employee
         public ActionResult Index()
         {
